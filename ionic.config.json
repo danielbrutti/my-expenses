@@ -1,0 +1,7 @@
+{
+  "name": "myExpenses",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
