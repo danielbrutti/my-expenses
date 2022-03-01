@@ -1,0 +1,6 @@
+{
+	"appId": "com.mateam.myexpenses",
+	"appName": "myExpenses",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
