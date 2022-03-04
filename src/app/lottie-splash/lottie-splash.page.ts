@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AnimationItem } from 'lottie-web';
 import { AnimationOptions } from 'ngx-lottie';
 
 @Component({
@@ -19,7 +18,7 @@ export class LottieSplashPage implements OnInit {
   ngOnInit() {
   }
 
-  animationCompleted(animationItem: AnimationItem): void {
+  animationCompleted(): void {
     this.router.navigateByUrl('login', { replaceUrl: true });
   }
 

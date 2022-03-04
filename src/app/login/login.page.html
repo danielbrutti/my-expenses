@@ -1,9 +1,22 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
+<ion-header class="ion-no-border">
+  <ion-title class="ion-text-center ion-padding">myExpenses</ion-title>
 </ion-header>
 
 <ion-content>
-
+  <ion-grid style="height: 100%">
+    <ion-row class="ion-justify-content-center ion-align-items-center" style="height: 100%">
+      <ion-card color="tertiary">
+        <ion-card-header>
+          <ion-card-subtitle>fingerprint authentication</ion-card-subtitle>
+          <ion-card-title>scan your fingerprint to authenticate</ion-card-title>
+        </ion-card-header>
+      
+        <ion-card-content>
+          <ng-lottie height="10rem" [options]="animationOptions$ | async"></ng-lottie>
+        </ion-card-content>
+      </ion-card>
+    </ion-row>
+  </ion-grid>
 </ion-content>
+
+<app-footer class="ion-no-border"></app-footer>
