@@ -1,16 +1,100 @@
 ion-header {
-    height: 5rem;
+  height: 5rem;
 
-    ion-title {
-        font-size: 2rem;
-        font-weight: 100;
-    }
+  ion-title {
+    font-size: 2rem;
+    font-weight: 100;
+  }
 }
 
 ion-card ion-button {
-    font-size: 3rem;
+  font-size: 3rem;
 }
 
 .status {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
+}
+
+/* Animations*/
+@keyframes shake {
+  from,
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translate3d(-10px, 0, 0);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translate3d(10px, 0, 0);
+  }
+}
+@keyframes buttonPress {
+  0% {
+    background-color: #e0e0e0;
+  }
+  100% {
+    background-color: #f1f1f1;
+  }
+}
+/* Lock Screen Layout*/
+.lock {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  background-color: #f1f1f1;
+}
+.lock-hidden {
+  display: none;
+}
+.label-row {
+  height: 50px;
+  width: 100%;
+  text-align: center;
+  font-size: 23px;
+  padding-top: 10px;
+  color: #222428;
+}
+.passcode-row {
+  display: contents;
+}
+.circle {
+  background-color: var(--ion-color-light) !important;
+  border-radius: 50%;
+  width: 1em;
+  height: 1em;
+  margin: 2em;
+}
+.digit {
+  font-size: 1.5em;
+  text-align: center;
+  color: var(--ion-color-dark) !important;
+  min-height: 3em;
+}
+.digit.activated {
+  -webkit-animation-name: buttonPress;
+  animation-name: buttonPress;
+  -webkit-animation-duration: 0.3;
+  animation-duration: 0.3s;
+}
+.full {
+  background-color: var(--ion-color-dark) !important;
+}
+.shake {
+  -webkit-animation-name: shake;
+  animation-name: shake;
+  -webkit-animation-duration: 0.5;
+  animation-duration: 0.5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
 }

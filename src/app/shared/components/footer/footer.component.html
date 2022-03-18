@@ -1,7 +1,7 @@
 
 <ion-footer>
   <ion-item>
-    <ion-text slot="start">mateam &copy; {{currentYear}}</ion-text>
-    <ion-text slot="end">v{{ appVersion | async }}</ion-text>
+    <ion-text slot="start">mateam &copy; {{ currentYear }}</ion-text>
+    <ion-text slot="end">v{{ appVersion$ | async }}</ion-text>
   </ion-item>
 </ion-footer>

@@ -1,34 +1,39 @@
-import { Component, OnInit } from '@angular/core';
+import { APP_INITIALIZER, ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { App, AppInfo } from '@capacitor/app';
 import { Platform } from '@ionic/angular';
-import { from, Observable, of } from 'rxjs';
+import { BehaviorSubject, from, Observable, of } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
+import { LogService } from '../../services/log.service';
 
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FooterComponent implements OnInit {
 
-  constructor(private platform: Platform) { }
+  appVersion$: Observable<string>;
+  private appVersion = new BehaviorSubject<string>('Browser');
+
+  constructor(private platform: Platform) {
+  }
 
   get currentYear(): number {
+    LogService.logInfo('Current Year');
     return new Date().getFullYear();
   }
 
-  get appVersion(): Observable<string> {
+  ngOnInit() {
+    LogService.logInfo('Footer Screen');
+    this.appVersion$ = this.appVersion.asObservable();
     if (this.platform.is('capacitor')) {
-      return from(App.getInfo())
+      from(App.getInfo())
         .pipe(
-          tap((appInfo) => console.log(appInfo)),
-          map((appInfo) => appInfo.version)
-        );
+          tap(appInfo => LogService.logInfo('App Info', appInfo)),
+          map(appInfo => this.appVersion.next(appInfo.version))
+        ).subscribe();
     }
-
-    return of('Browser');
   }
-
-  ngOnInit() { }
 
 }

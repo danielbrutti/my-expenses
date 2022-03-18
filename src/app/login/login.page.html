@@ -2,21 +2,45 @@
   <ion-title class="ion-text-center ion-padding">myExpenses</ion-title>
 </ion-header>
 
-<ion-content>
-  <ion-grid style="height: 100%">
-    <ion-row class="ion-justify-content-center ion-align-items-center" style="height: 100%">
-      <ion-card color="tertiary">
-        <ion-card-header>
-          <ion-card-subtitle>fingerprint authentication</ion-card-subtitle>
-          <ion-card-title>scan your fingerprint to authenticate</ion-card-title>
-        </ion-card-header>
-      
-        <ion-card-content>
-          <ng-lottie height="10rem" [options]="animationOptions$ | async"></ng-lottie>
-        </ion-card-content>
-      </ion-card>
-    </ion-row>
-  </ion-grid>
+<ion-content class="ion-padding-top">
+  <ion-card color="primary">
+    <ion-card-header>
+      <ion-card-subtitle>authentication</ion-card-subtitle>
+      <ion-card-title>use your passcode or scan your fingerprint</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row class="ion-justify-content-center ion-align-items-center ion-,argin" [ngClass]="passcodeWrong ?  'shake' : ''">
+          <ion-col size="12" class="ion-text-center passcode-row">
+            <div class="circle" [ngClass]="enteredPasscode.length > 0 ? 'full' : ''"></div>
+            <div class="circle" [ngClass]="enteredPasscode.length > 1 ? 'full' : ''"></div>
+            <div class="circle" [ngClass]="enteredPasscode.length > 2 ? 'full' : ''"></div>
+            <div class="circle" [ngClass]="enteredPasscode.length > 3 ? 'full' : ''"></div>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-justify-content-center ion-align-items-center">
+          <ion-col size="4" class="digit" (click)="digit(1)">1</ion-col>
+          <ion-col size="4" class="digit" (click)="digit(2)">2</ion-col>
+          <ion-col size="4" class="digit" (click)="digit(3)">3</ion-col>
+        </ion-row>
+        <ion-row class="ion-justify-content-center ion-align-items-center">
+          <ion-col size="4" class="digit" (click)="digit(4)">4</ion-col>
+          <ion-col size="4" class="digit" (click)="digit(5)">5</ion-col>
+          <ion-col size="4" class="digit" (click)="digit(6)">6</ion-col>
+        </ion-row>
+        <ion-row class="ion-justify-content-center ion-align-items-center">
+          <ion-col size="4" class="digit" (click)="digit(7)">7</ion-col>
+          <ion-col size="4" class="digit" (click)="digit(8)">8</ion-col>
+          <ion-col size="4" class="digit" (click)="digit(9)">9</ion-col>
+        </ion-row>
+        <ion-row class="ion-justify-content-center ion-align-items-center">
+          <ion-col size="4" class="digit" (click)="verifyFingerprint()"><ion-icon name="finger-print-outline"></ion-icon></ion-col>
+          <ion-col size="4" class="digit">0</ion-col>
+          <ion-col size="4" class="digit" (click)="remove()"><ion-icon name="backspace-outline"></ion-icon></ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
 
 <app-footer class="ion-no-border"></app-footer>

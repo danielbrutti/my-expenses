@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Platform } from '@ionic/angular';
+import { LogService } from './shared/services/log.service';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -8,6 +8,7 @@ import { Platform } from '@ionic/angular';
 })
 export class AppComponent {
   public appPages = [
+    { title: 'Login', url: '/login', icon: 'finger-print' },
     { title: 'Dashboard', url: '/dashboard', icon: 'infinite' },
     { title: 'Accounts', url: '/accounts', icon: 'bookmarks' },
     { title: 'Analysis', url: '/analysis', icon: 'bar-chart' },
@@ -16,12 +17,14 @@ export class AppComponent {
   ];
 
   constructor(
-    private router: Router
+    private _router: Router
   ) {
     this.initializeApp();
   }
 
   private initializeApp(): void {
-    this.router.navigateByUrl('lottie-splash', { replaceUrl: true });
+    LogService.logInfo('App Initialized');
+    //this.router.navigateByUrl('lottie-splash', { replaceUrl: true });
+    this._router.navigateByUrl('login', { replaceUrl: true });
   }
 }

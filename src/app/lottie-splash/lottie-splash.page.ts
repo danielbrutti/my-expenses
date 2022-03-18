@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AnimationOptions } from 'ngx-lottie';
+import { LogService } from '../shared/services/log.service';
 
 @Component({
   selector: 'app-lottie-splash',
@@ -13,13 +14,15 @@ export class LottieSplashPage implements OnInit {
     path: '/assets/lottie.json',
   };
 
-  constructor(private router: Router) { }
+  constructor(private _router: Router) { }
 
   ngOnInit() {
+    LogService.logInfo('Lottie Splash Screen');
   }
 
   animationCompleted(): void {
-    this.router.navigateByUrl('login', { replaceUrl: true });
+    LogService.logInfo('Lottie Splash Completed');
+    this._router.navigateByUrl('login', { replaceUrl: true });
   }
 
 }
