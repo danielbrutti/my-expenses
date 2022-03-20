@@ -6,16 +6,14 @@
   <ion-card color="primary">
     <ion-card-header>
       <ion-card-subtitle>authentication</ion-card-subtitle>
-      <ion-card-title>use your passcode or scan your fingerprint</ion-card-title>
+      <ion-card-title *ngIf="!firstCode">please set your passcode</ion-card-title>
+      <ion-card-title *ngIf="firstCode">please repeat your passcode</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <app-passcode-verifier
-        [passcode]="passcode"
-        [maxAttemps]="3"
-        (verificationComplete)="onVerificationComplete($event)">
-      </app-passcode-verifier>
+      <app-passcode
+        [fingerprintEnabled]="false"
+        (passcode)="onPasscode($event)">
+      </app-passcode>
     </ion-card-content>
   </ion-card>
 </ion-content>
-
-<app-footer class="ion-no-border"></app-footer>

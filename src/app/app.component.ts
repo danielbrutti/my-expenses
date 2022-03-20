@@ -24,7 +24,7 @@ export class AppComponent {
 
   private initializeApp(): void {
     LogService.logInfo('App Initialized');
-    //this.router.navigateByUrl('lottie-splash', { replaceUrl: true });
+    //this._router.navigateByUrl('lottie-splash', { replaceUrl: true });
     this._router.navigateByUrl('login', { replaceUrl: true });
   }
 }
