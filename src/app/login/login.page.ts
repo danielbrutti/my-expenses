@@ -42,7 +42,6 @@ export class LoginPage implements OnInit {
         return;
       }
       this.passcode = passcode;
-      console.log('CODE', this.passcode);
     });
   }
 
